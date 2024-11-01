@@ -121,6 +121,20 @@ export default function Login() {
             </form>
           </FormProvider>
         </CardContent>
+        <CardFooter className='flex flex-col gap-2'>
+          <div className='text-sm text-muted-foreground'>
+            Don't Have an Account? {"    "}
+            <Link className='underline' href={"/register"}>
+              Register
+            </Link>
+          </div>
+          <div className='text-sm text-muted-foreground'>
+            Forget your password?{"       "}
+            <Link className='underline' href='/reset-password'>
+              Reset Password
+            </Link>
+          </div>
+        </CardFooter>
       </Card>
     </main>
   );
