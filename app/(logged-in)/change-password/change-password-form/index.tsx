@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { passwordSchema } from "@/validation/passwordSchema";
 import { passwordMatchSchema } from "@/validation/passwordMatchSchema";
+import { changePassword } from "./action";
 
 const formSchema = z
   .object({
@@ -47,7 +48,20 @@ export default function ChangePasswordForm() {
 
   //   console.log(form);
 
-  const handleSubmit = async (data: z.infer<typeof formSchema>) => {};
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+    const response = await changePassword({
+      currentPassword: data.currentPassword,
+      password: data.password,
+      passwordConfirm: data.passwordConfirm,
+    });
+
+    if (response?.error) {
+      form.setError("root", {
+        message: response.message,
+        
+      });
+    }
+  };
 
   return (
     <FormProvider {...form}>
