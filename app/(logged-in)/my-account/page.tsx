@@ -24,7 +24,7 @@ export default async function MyAccount() {
       <CardContent>
         <Label>Email Address</Label>
         <div className='text-muted-foreground'>{session?.user?.email}</div>
-
+        {/* Two Factor Auth Form */}
         <TwoFactorAuthForm
           twoFactorActivated={user.twoFactorActivated ?? false}
         />

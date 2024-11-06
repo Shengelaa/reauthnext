@@ -47,7 +47,7 @@ export const get2faSecret = async () => {
 
   // Create an otpauth:// URI for the QR code
   const totp = new OTPAuth.TOTP({
-    issuer: "WebDevEducation",
+    issuer: "re-educate.online",
     label: session.user.email ?? "User",
     algorithm: "SHA1",
     digits: 6,
@@ -64,6 +64,7 @@ export const get2faSecret = async () => {
 
 export const activate2fa = async (token: string) => {
   const session = await auth();
+
   if (!session?.user?.id) {
     return {
       error: true,
@@ -98,7 +99,7 @@ export const activate2fa = async (token: string) => {
     if (!tokenValid) {
       return {
         error: true,
-        message: "Invalid PASSCODE",
+        message: "Invalid OTP",
       };
     }
 
