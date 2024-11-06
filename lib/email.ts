@@ -5,6 +5,6 @@ export const mailer = nodemailer.createTransport({
   port: 587,
   auth: {
     user: "resend",
-    password: process.env.RESEND_API_KEY,
-  }
+    pass: process.env.RESEND_API_KEY,
+  },
 });
